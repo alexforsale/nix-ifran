@@ -1,16 +1,23 @@
 {
+  pkgs,
   ...
 }:
 {
+  imports = [
+    ../../common
+  ];
+
   home = {
     username = "alexforsale";
     homeDirectory = "/home/alexforsale";
     stateVersion = "25.11";
-    # packages = with pkgs; [
-    #   nordzy-icon-theme
-    #];
+
   };
-  imports = [
-    ../../common
-  ];
+
+  programs = {
+    emacs = {
+      enable = true;
+      package = pkgs.myEmacs;
+    };
+  };
 }

@@ -1,5 +1,5 @@
 {
-pkgs,
+  pkgs,
 }:
 let
   myEmacs = pkgs.emacs-pgtk;
@@ -15,16 +15,24 @@ let
   emacsWithPackages (
     epkgs:
     (with epkgs.melpaStablePackages; [
+      cape
+      consult
+      consult-eglot
+      consult-eglot-embark
+      corfu
       magit
+      marginalia
       markdown-mode
       multiple-cursors
       notmuch-addr
       nix-ts-mode
       ol-notmuch
+      orderless
       ox-hugo
       pdf-tools
       rainbow-delimiters
       rainbow-identifiers
+      vertico
       yaml-pro
       (epkgs.treesit-grammars.with-grammars
         (grammars:

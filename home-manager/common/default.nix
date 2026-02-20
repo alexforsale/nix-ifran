@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }:
@@ -12,6 +13,17 @@
       nixpkgs-fmt
       tree
     ];
+  };
+
+  nixpkgs = {
+    overlays = [
+      inputs.self.overlays.additions
+      inputs.self.overlays.modifications
+      inputs.self.overlays.unstable-packages
+    ];
+    config = {
+      allowUnfree = true;
+    };
   };
 
   programs = {
@@ -29,6 +41,10 @@
       tmux = {
         enableShellIntegration = true;
       };
+    };
+
+    home-manager = {
+      enable = true;
     };
 
     jq = {
