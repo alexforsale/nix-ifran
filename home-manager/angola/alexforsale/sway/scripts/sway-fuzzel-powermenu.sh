@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SELECTION="$(printf "󰌾  Lock\n󰤂  Suspend\n󰍃  Log out\n󰜉  Reboot\n  Shutdown" | fuzzel --dmenu -l 5 -p "Power Menu: " -a top-right -w 15)"
+
+case $SELECTION in
+  *"Lock")
+    swaylock;;
+  *"Suspend")
+    systemctl suspend;;
+  *"Log out")
+    niri msg action quit --skip-confirmation;;
+  *"Reboot")
+    systemctl reboot;;
+  *"Shutdown")
+    systemctl poweroff;;
+esac
