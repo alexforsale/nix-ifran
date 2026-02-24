@@ -20,6 +20,7 @@ let
       consult-eglot
       consult-eglot-embark
       corfu
+      gruvbox-theme
       magit
       marginalia
       markdown-mode
