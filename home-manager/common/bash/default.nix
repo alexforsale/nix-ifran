@@ -45,6 +45,7 @@
       ll = "ls -alF";
       la = "ls -A";
       l = "ls -CF";
+      neofetch = "fastfetch";
     };
     initExtra = ''
       for completion in $HOME/.nix-profile/share/bash-completion/completions/*; do
