@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
@@ -493,4 +494,11 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    playerctl
+    mpc
+    libnotify
+    mpd-notification
+  ];
 }
