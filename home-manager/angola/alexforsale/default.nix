@@ -37,9 +37,9 @@
       ];
     };
     secrets = {
-      "applications/syncthing/password" = {};
-      "applications/syncthing/cert" = {};
-      "applications/syncthing/key" = {};
+      "applications/syncthing/password" = { };
+      "applications/syncthing/cert" = { };
+      "applications/syncthing/key" = { };
     };
   };
 
@@ -50,6 +50,41 @@
       cert = config.sops.secrets."applications/syncthing/cert".path;
       key = config.sops.secrets."applications/syncthing/key".path;
       passwordFile = config.sops.secrets."applications/syncthing/password".path;
+
+      settings = {
+        devices = {
+          "CPH2273" = {
+            name = "CPH2273";
+            id = "E55TRAX-5N7NP6F-TFT6XPI-E3BELPI-WNS2FD6-PINZZQE-I4ZUV56-BUL4VQM";
+          };
+          "burundi" = {
+            name = "burundi";
+            id = "YYX22VO-4JGE5BK-M4BWTUQ-IBJYK7T-GIDRQHL-KDA3SPV-NPAMPT7-MH6WHQY";
+          };
+        };
+
+        folders = {
+          "/home/${config.home.username}/Sync" = {
+            id = "default";
+            path = "~/Sync";
+            label = "Default Folder";
+            devices = [
+              "CPH2273"
+              "burundi"
+            ];
+          };
+
+          "/home/${config.home.username}/Music" = {
+            id = "amjxx-hcorl";
+            path = "~/Music";
+            label = "Music";
+            devices = [
+              "CPH2273"
+              "burundi"
+            ];
+          };
+        };
+      };
     };
   };
 }
