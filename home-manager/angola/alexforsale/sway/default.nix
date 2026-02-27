@@ -286,6 +286,9 @@ in
         default-timeout = 2000;
         icon-location = "right";
         max-visible = 3;
+        background-color = colors.rgb.base00;
+        text-color = colors.rgb.base05;
+        font = "Iosevka Nerd Font 10";
       };
     };
 
