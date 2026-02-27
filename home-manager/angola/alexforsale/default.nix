@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }:
@@ -26,5 +27,29 @@
       hunspellDicts.id_ID
       gruvbox-gtk-theme
     ];
+  };
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age = {
+      sshKeyPaths = [
+        "${config.home.homeDirectory}/.ssh/id_ed25519"
+      ];
+    };
+    secrets = {
+      "applications/syncthing/password" = {};
+      "applications/syncthing/cert" = {};
+      "applications/syncthing/key" = {};
+    };
+  };
+
+  services = {
+    syncthing = {
+      enable = true;
+      guiAddress = "0.0.0.0:8384";
+      cert = config.sops.secrets."applications/syncthing/cert".path;
+      key = config.sops.secrets."applications/syncthing/key".path;
+      passwordFile = config.sops.secrets."applications/syncthing/password".path;
+    };
   };
 }

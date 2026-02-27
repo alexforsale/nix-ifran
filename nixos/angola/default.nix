@@ -66,11 +66,6 @@ in
     gnome.gnome-keyring.enable = true;
 
     pipewire.enable = true;
-
-    syncthing = {
-      enable = true;
-      guiAddress = "0.0.0.0:8384";
-    };
   };
 
   environment.systemPackages = [
