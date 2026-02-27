@@ -34,14 +34,6 @@
   };
 
   programs = {
-    jq = {
-      enable = true;
-    };
-
-    jqp = {
-      enable = true;
-    };
-
     ripgrep = {
       enable = true;
     };
