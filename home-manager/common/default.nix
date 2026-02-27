@@ -10,6 +10,8 @@
     ./fd
     ./fzf
     ./home-manager
+    ./jq
+    ./ripgrep/
   ];
 
   home = {
@@ -34,10 +36,6 @@
   };
 
   programs = {
-    ripgrep = {
-      enable = true;
-    };
-
     tmux = {
       enable = true;
       prefix = "C-a";
