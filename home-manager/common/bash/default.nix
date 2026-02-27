@@ -46,5 +46,10 @@
       la = "ls -A";
       l = "ls -CF";
     };
+    initExtra = ''
+      for completion in $HOME/.nix-profile/share/bash-completion/completions/*; do
+        source $(readlink -f $completion)
+      done
+    '';
   };
 }
