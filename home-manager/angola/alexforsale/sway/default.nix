@@ -148,18 +148,20 @@ in
       settings = {
         main = {
           terminal = "${pkgs.foot}/bin/foot";
+          font = "Iosevka Nerd Font:size=10";
+          match-counter = true;
         };
         colors = {
           background = colors.rgba.base00;
           text = colors.rgba.base07;
           prompt = colors.rgba.base06;
           placeholder = colors.rgba.base05;
-          input = colors.rgba.base00;
+          input = colors.rgba.base07;
           match = colors.rgba.base0D;
           selection = colors.rgba.base04;
-          selection-text = colors.rgba.base21;
-          selection-match = colors.rgba.base0D;
-          counter = "93a1a1ff";
+          selection-text = colors.rgba.base07;
+          selection-match = colors.rgba.base09;
+          counter = colors.rgba.base04;
           border = colors.rgba.base13;
         };
       };
