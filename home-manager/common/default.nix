@@ -14,6 +14,7 @@
     ./ripgrep
     ./ssh
     ./tmux
+    ./zoxide
   ];
 
   home = {
@@ -34,16 +35,6 @@
     ];
     config = {
       allowUnfree = true;
-    };
-  };
-
-  programs = {
-    zoxide = {
-      enable = true;
-      enableBashIntegration = true;
-      options = [
-        "--cmd cd"
-      ];
     };
   };
 
