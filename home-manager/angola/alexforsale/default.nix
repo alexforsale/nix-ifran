@@ -270,6 +270,17 @@
       enable = true;
       mpd.useLocal = true;
     };
+
+    mpdscribble = {
+      enable = true;
+      host = "localhost";
+      endpoints = {
+        "last.fm" = {
+          passwordFile = "/var/tmp/mpdscribble.password";
+          username = "alexforsale";
+        };
+      };
+    };
   };
 
   xdg = {
