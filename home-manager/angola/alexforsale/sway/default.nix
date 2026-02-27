@@ -336,7 +336,7 @@ in
   wayland = {
     systemd.target = "sway-session.target";
     windowManager.sway = {
-      checkConfig = true;
+      checkConfig = false;
 
       config = {
         left = "h";
@@ -405,6 +405,15 @@ in
           };
           "10874:38295:CASUE_USB_KB" = {
             xkb_options = "scrolllock:mod3";
+          };
+        };
+
+        output = {
+          HDMI-A-2 = {
+            bg = "~/.local/share/wallpapers/nord/linux-friends-4k.png fill";
+          };
+          VGA-1 = {
+            bg = "~/.local/share/wallpapers/nord/pixelmoon.png fill";
           };
         };
 
