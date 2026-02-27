@@ -5,6 +5,10 @@
   ...
 }:
 {
+  imports = [
+    ./fastfetch
+  ];
+
   home = {
     packages = with pkgs; [
       nil
@@ -27,10 +31,6 @@
   };
 
   programs = {
-    fastfetch = {
-      enable = true;
-    };
-
     fd = {
       enable = true;
     };
