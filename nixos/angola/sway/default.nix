@@ -61,12 +61,4 @@
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
-
-  environment.systemPackages = with pkgs; [
-    file-roller
-    wl-clipboard
-    mako
-    firefox
-    pwvucontrol
-  ];
 }

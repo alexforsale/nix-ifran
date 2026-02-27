@@ -8,7 +8,7 @@ case $SELECTION in
   *"Suspend")
     systemctl suspend;;
   *"Log out")
-    niri msg action quit --skip-confirmation;;
+    swaymsg exit;;
   *"Reboot")
     systemctl reboot;;
   *"Shutdown")

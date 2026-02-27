@@ -7,8 +7,97 @@
 let
   lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
   display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
+  cursor.theme.name = "phinger-cursors-dark";
+  cursor.theme.package = pkgs.phinger-cursors;
+  iconTheme.name = "Nordzy-green-dark";
+  iconTheme.package = pkgs.nordzy-icon-theme;
+  gtkTheme.name = "Gruvbox-Dark";
+  colors = {
+    rgb = {
+      base00 = "#282828";
+      base01 = "#3c3836";
+      base02 = "#504945";
+      base03 = "#665c54";
+      base04 = "#928374";
+      base05 = "#ebdbb2";
+      base06 = "#fbf1c7";
+      base07 = "#f9f5d7";
+      base08 = "#cc241d";
+      base09 = "#d65d0e";
+      base0A = "#d79921";
+      base0B = "#98971a";
+      base0C = "#689d6a";
+      base0D = "#458588";
+      base0E = "#b16286";
+      base0F = "#9d0006";
+      base10 = "#2a2520";
+      base11 = "#1d1d1d";
+      base12 = "#fb4934";
+      base13 = "#fabd2f";
+      base14 = "#b8bb26";
+      base15 = "#8ec07c";
+      base16 = "#83a598";
+      base17 = "#d3869b";
+      base18 = "#5f676a";
+      base19 = "#484e50";
+      base20 = "#a89984";
+      base21 = "#292d2e";
+      base22 = "#222222";
+      base23 = "#2e9ef4";
+    };
+    rgba = {
+      base00 = "282828ff";
+      base01 = "3c3836ff";
+      base02 = "504945ff";
+      base03 = "665c54ff";
+      base04 = "928374ff";
+      base05 = "ebdbb2ff";
+      base06 = "fbf1c7ff";
+      base07 = "f9f5d7ff";
+      base08 = "cc241dff";
+      base09 = "d65d0eff";
+      base0A = "d79921ff";
+      base0B = "98971aff";
+      base0C = "689d6aff";
+      base0D = "458588ff";
+      base0E = "b16286ff";
+      base0F = "9d0006ff";
+      base10 = "2a2520ff";
+      base11 = "1d1d1dff";
+      base12 = "fb4934ff";
+      base13 = "fabd2fff";
+      base14 = "b8bb26ff";
+      base15 = "8ec07cff";
+      base16 = "83a598ff";
+      base17 = "d3869bff";
+      base18 = "5f676aff";
+      base19 = "484e50ff";
+      base20 = "a89984ff";
+      base21 = "292d2eff";
+      base22 = "222222ff";
+      base23 = "2e9ef4ff";
+    };
+  };
 in
 {
+
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+    cursorTheme = {
+      name = cursor.theme.name;
+      package = cursor.theme.package;
+      size = 24;
+    };
+    iconTheme = {
+      name = iconTheme.name;
+      package = iconTheme.package;
+    };
+    theme = {
+      name = gtkTheme.name;
+    };
+  };
+
   home = {
     packages = with pkgs; [
       libnotify
@@ -24,6 +113,11 @@ in
       libreoffice-fresh
       telegram-desktop
       euphonica
+      pwvucontrol
+      tesseract5
+      nerd-fonts.iosevka
+      nerd-fonts.dejavu-sans-mono
+      twitter-color-emoji
     ];
   };
 
@@ -53,7 +147,70 @@ in
       enable = true;
       settings = {
         main = {
-          terminal = "alacritty";
+          terminal = "${pkgs.foot}/bin/foot";
+        };
+        colors = {
+          background = colors.rgba.base00;
+          text = colors.rgba.base07;
+          prompt = colors.rgba.base06;
+          placeholder = colors.rgba.base05;
+          input = colors.rgba.base00;
+          match = colors.rgba.base0D;
+          selection = "eee8d5ff";
+          selection-text = colors.rgba.base06;
+          selection-match = colors.rgba.base0D;
+          counter = "93a1a1ff";
+          border = "002b36ff";
+        };
+      };
+    };
+
+    i3status-rust = {
+      enable = true;
+      bars = {
+        bottom = {
+          theme = "gruvbox-dark";
+          icons = "material-nf";
+          blocks = [
+            {
+              block = "cpu";
+              info_cpu = 20;
+              warning_cpu = 50;
+              critical_cpu = 90;
+            }
+            {
+              block = "memory";
+              format = " $icon $mem_used_percents.eng(w:1) ";
+              format_alt = " $icon_swap $swap_free.eng(w:3,u:B,p:Mi)/$swap_total.eng(w:3,u:B,p:Mi)($swap_used_percents.eng(w:2)) ";
+              interval = 30;
+              warning_mem = 70;
+              critical_mem = 90;
+            }
+            {
+              block = "disk_space";
+              path = "/";
+              info_type = "available";
+              alert_unit = "GB";
+              interval = 30;
+              warning = 20;
+              alert = 10;
+              format = " $icon root: $available.eng(w:2) ";
+            }
+            {
+              block = "sound";
+              click = [
+                {
+                  button = "left";
+                  cmd = "pwvucontrol";
+                }
+              ];
+            }
+            {
+              block = "time";
+              interval = 60;
+              format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+            }
+          ];
         };
       };
     };
@@ -144,10 +301,22 @@ in
       enable = true;
 
       events = [
-        { event = "before-sleep"; command = (display "off") + "; " + lock; }
-        { event = "after-resume"; command = display "on"; }
-        { event = "lock"; command = (display "off") + "; " + lock; }
-        { event = "unlock"; command = display "on"; }
+        {
+          event = "before-sleep";
+          command = (display "off") + "; " + lock;
+        }
+        {
+          event = "after-resume";
+          command = display "on";
+        }
+        {
+          event = "lock";
+          command = (display "off") + "; " + lock;
+        }
+        {
+          event = "unlock";
+          command = display "on";
+        }
       ];
 
       timeouts = [
@@ -187,6 +356,50 @@ in
         modifier = "Mod4";
 
         workspaceAutoBackAndForth = true;
+
+        colors = {
+          background = colors.rgb.base00;
+
+          focused = {
+            border = colors.rgb.base03;
+            background = colors.rgb.base03;
+            text = colors.rgb.base05;
+            indicator = colors.rgb.base23;
+            childBorder = colors.rgb.base03;
+          };
+
+          unfocused = {
+            border = colors.rgb.base01;
+            background = colors.rgb.base01;
+            text = colors.rgb.base20;
+            indicator = colors.rgb.base21;
+            childBorder = colors.rgb.base22;
+          };
+
+          focusedInactive = {
+            border = colors.rgb.base00;
+            background = colors.rgb.base18;
+            text = colors.rgb.base07;
+            indicator = colors.rgb.base19;
+            childBorder = colors.rgb.base18;
+          };
+
+          urgent = {
+            border = colors.rgb.base08;
+            background = colors.rgb.base08;
+            text = colors.rgb.base05;
+            indicator = colors.rgb.base08;
+            childBorder = colors.rgb.base08;
+          };
+
+          placeholder = {
+            border = "#000000";
+            background = "#0c0c0c";
+            text = "#ffffff";
+            indicator = "#000000";
+            childBorder = "#0c0c0c";
+          };
+        };
 
         input = {
           "type:touchpad" = {
@@ -254,7 +467,7 @@ in
             }
             {
               criteria = {
-                window_role= "pop-up";
+                window_role = "pop-up";
               };
               command = "floating enable";
             }
@@ -367,12 +580,6 @@ in
             }
             {
               criteria = {
-                app_id = "org.telegram.desktop";
-              };
-              command = "floating enable";
-            }
-            {
-              criteria = {
                 app_id = "discord";
               };
               command = "floating enable";
@@ -398,42 +605,94 @@ in
           ];
         };
         startup = [
-          { command = "emacs --fg-daemon"; always = false; }
-          { command = "thunar --daemon"; always = false; }
-          { command = "alacritty --app-id ncmpcpp -e ncmpcpp"; always = false; }
-          { command = "wl-paste --type text --watch cliphist store &"; always = false; }
-          { command = "wl-paste --type image --watch cliphist store &"; always = false; }
+          {
+            command = "emacs --fg-daemon";
+            always = false;
+          }
+          {
+            command = "thunar --daemon";
+            always = false;
+          }
+          {
+            command = "foot --app-id ncmpcpp -e ncmpcpp";
+            always = false;
+          }
+          {
+            command = "wl-paste --type text --watch cliphist store &";
+            always = false;
+          }
+          {
+            command = "wl-paste --type image --watch cliphist store &";
+            always = false;
+          }
         ];
 
         bars = [
+          {
+            position = "bottom";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+            colors = {
+              background = colors.rgb.base01;
+              statusline = colors.rgb.base05;
+              separator = colors.rgb.base03;
+
+              focusedWorkspace = {
+                border = colors.rgb.base0D;
+                background = colors.rgb.base0D;
+                text = colors.rgb.base05;
+              };
+
+              activeWorkspace = {
+                border = colors.rgb.base16;
+                background = colors.rgb.base16;
+                text = colors.rgb.base05;
+              };
+
+              inactiveWorkspace = {
+                border = colors.rgb.base02;
+                background = colors.rgb.base02;
+                text = colors.rgb.base05;
+              };
+
+              urgentWorkspace = {
+                border = colors.rgb.base08;
+                background = colors.rgb.base08;
+                text = colors.rgb.base02;
+              };
+            };
+          }
         ];
 
-        keybindings = let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-          in lib.mkOptionDefault {
+        keybindings =
+          let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+          in
+          lib.mkOptionDefault {
             # apps and other common function.
             "${modifier}+v" = "exec pwvucontrol";
             "${modifier}+d" = "exec fuzzel";
             "${modifier}+e" = "exec thunar";
             "${modifier}+q" = "exec ${scripts/sway-fuzzel-powermenu.sh}";
             "${modifier}+Mod1+n" = "exec emacsclient -c -a emacs";
-            "${modifier}+Shift+Return" = "exec alacritty -e tmux new -A -s main";
+            "${modifier}+Shift+Return" = "exec foot -e tmux new -A -s main";
             "${modifier}+f" = "fullscreen toggle; exec notify-send -t 1500 -u low 'fullscreen toggle'";
             "${modifier}+minus" = "scratchpad show; exec notify-send -t 1500 -u low 'toggle scratchpad'";
-            "${modifier}+Mod1+k" = "exec alacritty --app-id khal -e khal interactive";
+            "${modifier}+Mod1+k" = "exec foot --app-id khal -e khal interactive";
             "${modifier}+Mod1+b" = "exec brave";
-            "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+            "${modifier}+Shift+e" =
+              "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
             "${modifier}+Mod1+q" = "exec swaylock";
-            "${modifier}+Mod1+v" = "exec alacritty --app-id vim -e nvim";
+            "${modifier}+Mod1+v" = "exec foot --app-id vim -e nvim";
             "${modifier}+Shift+t" = "exec ${./scripts/sway-tesseract.sh}";
             "${modifier}+o" = "exec sway-easyfocus focus";
             "${modifier}+Shift+o" = "exec sway-easyfocus swap";
             "${modifier}+Mod1+m" = "exec emacsclient -c -a emacs -e '(notmuch)'";
-            "${modifier}+Mod1+w" = "exec alacritty --app-id nmtui -e nmtui";
+            "${modifier}+Mod1+w" = "exec foot --app-id nmtui -e nmtui";
             "${modifier}+Mod1+p" = "exec wl-color-picker";
 
             # fuzzel stuff
-            "${modifier}+c" = "exec cliphist list |fuzzel --dmenu --anchor top-left | cliphist decode | wl-copy";
+            "${modifier}+c" =
+              "exec cliphist list |fuzzel --dmenu --anchor top-left | cliphist decode | wl-copy";
 
             # screenshot
             "Print" = "exec bash ${./scripts/sway-grimshot.sh} screen";
@@ -477,7 +736,8 @@ in
             "${modifier}+space" = "focus mode_toggle; exec notify-send -t 1500 -u low 'window focus toggle'";
             "${modifier}+Control+a" = "focus parent; exec notify-send -t 1500 -u low 'focus parent container'";
             "${modifier}+Control+d" = "focus child; exec notify-send -t 1500 -u low 'focus child container'";
-            "${modifier}+Shift+minus" = "move scratchpad; exec notify-send -t 1500 -u low 'moved to scratchpad'";
+            "${modifier}+Shift+minus" =
+              "move scratchpad; exec notify-send -t 1500 -u low 'moved to scratchpad'";
 
             # workspace
             "${modifier}+1" = "workspace 1";
@@ -501,7 +761,6 @@ in
             "${modifier}+Shift+9" = "move container to workspace 9";
             "${modifier}+Shift+0" = "move container to workspace 10";
 
-
             "${modifier}+bracketleft" = "workspace prev";
             "${modifier}+bracketright" = "workspace next";
             "${modifier}+Tab" = "workspace back_and_forth";
@@ -524,7 +783,7 @@ in
             "XF86AudioNext" = "exec playerctl next";
             "XF86AudioPrev" = "exec playerctl previous";
             "XF86MonBrightnessUp" = "exec ${./scripts/set-brightness.sh} +5%";
-            "XF86MonBrightnessDown" ="exec ${./scripts/set-brightness.sh} 5%-";
+            "XF86MonBrightnessDown" = "exec ${./scripts/set-brightness.sh} 5%-";
 
             # notification
             "${modifier}+Mod1+grave" = "exec makoctl dismiss";
