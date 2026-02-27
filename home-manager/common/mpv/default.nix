@@ -6,7 +6,10 @@
   programs.mpv = {
     enable = true;
     config = {
-      hwdec = "auto";
+      hwdec = "auto-safe";
+      vo = "gpu";
+      profile = "gpu-hq";
+      gpu-context = "wayland";
     };
     package = (
       pkgs.mpv-unwrapped.wrapper {
