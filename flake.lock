@@ -58,7 +58,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "wallpapers": "wallpapers"
       }
     },
     "sops-nix": {
@@ -79,6 +80,22 @@
         "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768495582,
+        "narHash": "sha256-ZQarpr93AaLFTEDelfHF3JmRJOeYcXn4qDToBPBeruM=",
+        "ref": "refs/heads/main",
+        "rev": "552b3dac55f2a7a5e5cca57d303b1068a127f1b1",
+        "revCount": 67,
+        "type": "git",
+        "url": "ssh://git@gitlab.com/alexforsale/wallpapers"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@gitlab.com/alexforsale/wallpapers"
       }
     }
   },

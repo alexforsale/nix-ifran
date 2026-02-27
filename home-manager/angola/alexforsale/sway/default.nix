@@ -80,6 +80,9 @@ let
   };
 in
 {
+  imports = [
+    ../../../common/wpaperd
+  ];
 
   gtk = {
     enable = true;
@@ -99,6 +102,13 @@ in
   };
 
   home = {
+    pointerCursor = {
+      name = cursor.theme.name;
+      package = cursor.theme.package;
+      size = 24;
+      sway.enable = true;
+    };
+
     packages = with pkgs; [
       libnotify
       upower
@@ -785,6 +795,27 @@ in
       systemd = {
         variables = [ "--all" ];
       };
+    };
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [
+        "Iosevka Nerd Font Mono"
+      ];
+
+      serif = [
+        "Dejavu Sans Mono"
+      ];
+
+      sansSerif = [
+        "Dejavu Sans Mono"
+      ];
+
+      emoji = [
+        "Twitter Color Emoji"
+      ];
     };
   };
 }

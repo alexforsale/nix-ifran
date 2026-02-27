@@ -37,4 +37,6 @@
       allowUnfree = true;
     };
   };
+
+  systemd.user.startServices = "suggest";
 }

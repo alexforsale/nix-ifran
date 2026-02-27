@@ -12,6 +12,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpapers = {
+      url = "git+ssh://git@gitlab.com/alexforsale/wallpapers";
+      flake = false;
+    };
   };
 
   outputs = {

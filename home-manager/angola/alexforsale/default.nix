@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }:
@@ -86,6 +87,13 @@
           };
         };
       };
+    };
+  };
+
+  xdg.dataFile = {
+    "wallpapers" = {
+      source = inputs.wallpapers + "/.local/share/wallpapers";
+      recursive = true;
     };
   };
 }
