@@ -6,6 +6,7 @@
 {
   imports = [
     ../../common
+    ../../common/bash
     ../../common/emacs
     ../../common/git
     ../../common/mpd

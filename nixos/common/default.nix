@@ -160,4 +160,8 @@
       enable = true;
     };
   };
+
+  environment.pathsToLink = [
+    "/share/bash-completion"
+  ];
 }
