@@ -8,6 +8,7 @@
   imports = [
     ./fastfetch
     ./fd
+    ./fzf
   ];
 
   home = {
@@ -32,13 +33,6 @@
   };
 
   programs = {
-    fzf = {
-      enable = true;
-      enableBashIntegration = true;
-      tmux = {
-        enableShellIntegration = true;
-      };
-    };
 
     home-manager = {
       enable = true;
