@@ -1,0 +1,2 @@
+* nix-ifran
+My =nixos= and =home-manager= configuration.
