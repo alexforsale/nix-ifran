@@ -14,6 +14,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../common/thunar
     ../users/alexforsale
   ];
 
