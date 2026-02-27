@@ -6,6 +6,7 @@
 {
   imports = [
     ../../common
+    ../../common/emacs
     ./sway
   ];
 
@@ -26,11 +27,6 @@
   };
 
   programs = {
-    emacs = {
-      enable = true;
-      package = pkgs.myEmacs;
-    };
-
     git = {
       enable = true;
       lfs = {
