@@ -20,8 +20,14 @@ in
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 22000 8384 ];
-      allowedUDPPorts = [ 22000 21027 ];
+      allowedTCPPorts = [
+        22000
+        8384
+      ];
+      allowedUDPPorts = [
+        22000
+        21027
+      ];
     };
     hostName = "angola";
     networkmanager = {
