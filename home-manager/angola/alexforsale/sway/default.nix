@@ -5,7 +5,7 @@
   ...
 }:
 let
-  lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+  lock = "${pkgs.swaylock-fancy}/bin/swaylock-fancy --daemonize";
   display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
   cursor.theme.name = "phinger-cursors-dark";
   cursor.theme.package = pkgs.phinger-cursors;
@@ -81,7 +81,6 @@ let
 in
 {
   imports = [
-    ../../../common/wpaperd
   ];
 
   gtk = {
@@ -227,8 +226,11 @@ in
       };
     };
 
+    swayimg.enable = true;
+
     swaylock = {
       enable = true;
+      package = pkgs.swaylock-fancy;
     };
   };
 
