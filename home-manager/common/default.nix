@@ -7,6 +7,7 @@
 {
   imports = [
     ./fastfetch
+    ./fd
   ];
 
   home = {
@@ -31,10 +32,6 @@
   };
 
   programs = {
-    fd = {
-      enable = true;
-    };
-
     fzf = {
       enable = true;
       enableBashIntegration = true;
