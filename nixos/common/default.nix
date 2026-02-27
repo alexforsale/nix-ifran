@@ -6,10 +6,12 @@
   ...
 }:
 {
+  imports = [
+    ./sops
+  ];
   time = {
     timeZone = "Asia/Jakarta";
   };
-
 
   programs.nix-ld.enable = true;
   nixpkgs = {

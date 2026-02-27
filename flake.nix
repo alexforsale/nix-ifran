@@ -8,11 +8,16 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    sops-nix,
     ...
   } @ inputs: let
     systems = [
@@ -34,6 +39,7 @@
         angola = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
+            sops-nix.nixosModules.sops
             ./nixos/angola
           ];
         };
@@ -44,6 +50,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {inherit inputs;};
           modules = [
+            sops-nix.homeManagerModules.sops
             ./home-manager/angola/alexforsale
           ];
         };

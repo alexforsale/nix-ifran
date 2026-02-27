@@ -1,0 +1,9 @@
+keys:
+  - &alexforsale_age age1mzcgtt2v4z2avxwuuxud8763zfy2rsavyfjs42nfmur0622kygmshjy8p6
+  - &host_angola_age age1pxnv0ph84x94gxzkn9xklt3c5zq6hwd6e62hug7y4zfw0j6mqp5qzw26ng
+creation_rules:
+  - path_regex: .*secrets\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *alexforsale_age
+      - *host_angola_age
