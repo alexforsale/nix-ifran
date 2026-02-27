@@ -156,11 +156,11 @@ in
           placeholder = colors.rgba.base05;
           input = colors.rgba.base00;
           match = colors.rgba.base0D;
-          selection = "eee8d5ff";
-          selection-text = colors.rgba.base06;
+          selection = colors.rgba.base04;
+          selection-text = colors.rgba.base21;
           selection-match = colors.rgba.base0D;
           counter = "93a1a1ff";
-          border = "002b36ff";
+          border = colors.rgba.base13;
         };
       };
     };
