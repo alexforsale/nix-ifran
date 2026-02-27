@@ -10,7 +10,7 @@
       nil
       nixd
       nixdoc
-      nixpkgs-fmt
+      nixfmt
       tree
     ];
   };
