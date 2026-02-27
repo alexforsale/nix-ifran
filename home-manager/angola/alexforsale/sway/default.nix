@@ -453,12 +453,12 @@ in
               };
               command = "inhibit_idle fullscreen";
             }
-            {
-              criteria = {
-                app_id = ".*";
-              };
-              command = "opacity 0.95";
-            }
+            # {
+            #   criteria = {
+            #     app_id = ".*";
+            #   };
+            #   command = "opacity 0.95";
+            # }
             {
               criteria = {
                 app_id = "mpv";
@@ -604,6 +604,7 @@ in
             }
           ];
         };
+
         startup = [
           {
             command = "emacs --fg-daemon";
