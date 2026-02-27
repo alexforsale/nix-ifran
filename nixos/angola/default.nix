@@ -14,6 +14,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../common/avahi
     ../common/thunar
     ../users/alexforsale
   ];
@@ -42,18 +43,6 @@ in
   };
 
   services = {
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      nssmdns6 = true;
-      openFirewall = true;
-      publish = {
-        enable = true;
-        addresses = true;
-        domain = true;
-      };
-    };
-
     displayManager = {
       sddm = {
         enable = true;
