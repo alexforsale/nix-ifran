@@ -325,6 +325,11 @@ in
     udiskie = {
       enable = true;
       automount = true;
+      settings = {
+        program_options = {
+          tray = true;
+        };
+      };
     };
   };
 
