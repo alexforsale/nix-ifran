@@ -9,6 +9,7 @@
     ../../common/emacs
     ../../common/git
     ../../common/mpd
+    ../../common/mpv
     ../../common/password-store
     ./sway
   ];
