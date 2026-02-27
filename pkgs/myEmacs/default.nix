@@ -29,6 +29,7 @@ let
       nix-ts-mode
       ol-notmuch
       orderless
+      org-modern
       ox-hugo
       pdf-tools
       rainbow-delimiters
