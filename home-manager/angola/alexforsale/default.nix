@@ -11,6 +11,7 @@
     ../../common/mpd
     ../../common/mpv
     ../../common/password-store
+    ../../common/zathura
     ./sway
   ];
 

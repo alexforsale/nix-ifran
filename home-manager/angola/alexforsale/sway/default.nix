@@ -218,10 +218,6 @@ in
     swaylock = {
       enable = true;
     };
-
-    zathura = {
-      enable = true;
-    };
   };
 
   services = {
