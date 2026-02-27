@@ -9,6 +9,7 @@
     ./fastfetch
     ./fd
     ./fzf
+    ./home-manager
   ];
 
   home = {
@@ -33,11 +34,6 @@
   };
 
   programs = {
-
-    home-manager = {
-      enable = true;
-    };
-
     jq = {
       enable = true;
     };
