@@ -89,10 +89,23 @@
     };
   };
 
-  xdg.dataFile = {
-    "wallpapers" = {
-      source = inputs.wallpapers + "/.local/share/wallpapers";
-      recursive = true;
+  xdg = {
+    dataFile = {
+      "wallpapers" = {
+        source = inputs.wallpapers + "/.local/share/wallpapers";
+        recursive = true;
+      };
+    };
+
+    desktopEntries = {
+      name = "Org-Protocol";
+      exec = "emacsclient %u";
+      mimeType = [
+        "x-sheme-handler/org-protocol"
+      ];
+      terminal = false;
+      icon = "emacs-icon";
+      type = "Application";
     };
   };
 }
