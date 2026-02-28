@@ -39,6 +39,16 @@ in
   programs.sway.enable = true;
 
   security = {
+    pam = {
+      loginLimits = [
+        {
+          domain = "@users";
+          item = "rtprio";
+          type = "-";
+          value = 1;
+        }
+      ];
+    };
     polkit.enable = true;
   };
 
