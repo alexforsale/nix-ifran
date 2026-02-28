@@ -81,6 +81,8 @@ let
 in
 {
   imports = [
+    ../../../common/remmina
+    ../../../common/zathura
   ];
 
   gtk = {

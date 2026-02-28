@@ -13,7 +13,6 @@
     ../../common/mpd
     ../../common/mpv
     ../../common/password-store
-    ../../common/zathura
     ./mail.nix
     ./sway
   ];
