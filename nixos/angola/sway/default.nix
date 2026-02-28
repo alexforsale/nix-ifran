@@ -32,7 +32,9 @@
   security = {
     pam = {
       services = {
-        swaylock = {};
+        swaylock = {
+          enableGnomeKeyring = true;
+        };
       };
     };
   };
