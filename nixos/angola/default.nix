@@ -16,6 +16,7 @@ in
     ../common
     ../common/avahi
     ../common/thunar
+    ../common/kdeconnect
     ../users/alexforsale
   ];
 
