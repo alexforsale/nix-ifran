@@ -15,6 +15,7 @@ in
     ./hardware-configuration.nix
     ../common
     ../common/avahi
+    ../common/bluetooth
     ../common/thunar
     ../common/kdeconnect
     ../users/alexforsale
