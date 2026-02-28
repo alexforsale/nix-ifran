@@ -806,6 +806,10 @@ in
 
       enable = true;
 
+      extraConfig = ''
+        include /etc/sway/config.d/*
+      '';
+
       extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
         export QT_QPA_PLATFORM=wayland
