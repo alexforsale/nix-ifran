@@ -98,14 +98,16 @@
     };
 
     desktopEntries = {
-      name = "Org-Protocol";
-      exec = "emacsclient %u";
-      mimeType = [
-        "x-sheme-handler/org-protocol"
-      ];
-      terminal = false;
-      icon = "emacs-icon";
-      type = "Application";
+      org-protocol = {
+        name = "Org-Protocol";
+        exec = "emacsclient %u";
+        mimeType = [
+          "x-sheme-handler/org-protocol"
+        ];
+        terminal = false;
+        icon = "emacs-icon";
+        type = "Application";
+      };
     };
   };
 }
