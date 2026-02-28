@@ -161,6 +161,13 @@ in
                       Create = "near";
                     };
                   };
+                  "drafts" = {
+                    nearPattern = "drafts";
+                    farPattern = "[Gmail]/Drafts";
+                    extraConfig = {
+                      Create = "near";
+                    };
+                  };
                   "sent" = {
                     nearPattern = "sent";
                     farPattern = "[Gmail]/Sent Mail";
@@ -239,6 +246,16 @@ in
       Install.WantedBy = [ "default.target" ];
     };
 
+    "mbsync-googlemail-drafts" = {
+      Unit.Description = "Mbsync drafts channel";
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${writeMbsyncScript "googlemail-drafts"}";
+        ExecStartPost = "${pkgs.notmuch}/bin/notmuch new";
+      };
+      Install.WantedBy = [ "default.target" ];
+    };
+
     "mbsync-googlemail-trash" = {
       Unit.Description = "Mbsync trash channel";
       Service = {
@@ -307,6 +324,16 @@ in
         OnUnitInactiveSec = "20m";
         Persistent = true;
         Unit = "mbsync-googlemail-trash.service";
+      };
+      Install.WantedBy = [ "timers.target" ];
+    };
+
+    "mbsync-googlemail-drafts" = {
+      Unit.Description = "Timer for Mbsync drafts channel";
+      Timer = {
+        OnUnitInactiveSec = "5m";
+        Persistent = true;
+        Unit = "mbsync-googlemail-drafts.service";
       };
       Install.WantedBy = [ "timers.target" ];
     };
