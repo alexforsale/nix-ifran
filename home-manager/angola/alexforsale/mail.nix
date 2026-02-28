@@ -20,6 +20,9 @@ in
       "unread"
       "inbox"
     ];
+    new.ignore = [
+      "/.*[.](json|lock|bak)$/"
+    ];
     hooks = {
       postNew = "${pkgs.notmuch}/bin/notmuch tag -inbox +Archive2026 -- 'tag:inbox and not tag:Archive2026 and date:2026 and date:..30D'";
     };
