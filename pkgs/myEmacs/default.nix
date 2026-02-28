@@ -30,6 +30,7 @@ let
       ol-notmuch
       orderless
       org-modern
+      org-roam
       ox-hugo
       pdf-tools
       rainbow-delimiters
@@ -65,6 +66,7 @@ let
       pkgs.eslint
       pkgs.emmet-ls
       pkgs.emacsPackages.org-contrib
+      pkgs.emacsPackages.org-roam-ui
       pkgs.emacsPackages.rainbow-mode
       pkgs.emacsPackages.org-rainbow-tags
       pkgs.emacsPackages.indent-bars
