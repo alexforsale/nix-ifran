@@ -129,6 +129,14 @@ in
       nerd-fonts.iosevka
       nerd-fonts.dejavu-sans-mono
       twitter-color-emoji
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      font-awesome
+      source-han-sans
+      source-han-sans
+      source-han-serif
     ];
   };
 
@@ -825,14 +833,19 @@ in
       ];
 
       serif = [
+        "Noto Serif"
+        "Source Han Serif"
         "Dejavu Sans Mono"
       ];
 
       sansSerif = [
+        "Noto Serif"
+        "Source Han Serif"
         "Dejavu Sans Mono"
       ];
 
       emoji = [
+        "Noto Color Emoji"
         "Twitter Color Emoji"
       ];
     };
