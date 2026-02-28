@@ -9,7 +9,7 @@ let
   display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
   cursor.theme.name = "phinger-cursors-dark";
   cursor.theme.package = pkgs.phinger-cursors;
-  iconTheme.name = "Nordzy-green-dark";
+  iconTheme.name = "Nordzy-orange-dark";
   iconTheme.package = pkgs.nordzy-icon-theme;
   gtkTheme.name = "Gruvbox-Dark";
   colors = {
