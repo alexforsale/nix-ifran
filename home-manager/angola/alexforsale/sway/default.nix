@@ -684,7 +684,7 @@ in
             "${modifier}+Mod1+b" = "exec brave";
             "${modifier}+Shift+e" =
               "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-            "${modifier}+Mod1+q" = "exec swaylock";
+            "${modifier}+Mod1+q" = "exec swaylock-fancy";
             "${modifier}+Mod1+v" = "exec foot --app-id vim -e nvim";
             "${modifier}+Shift+t" = "exec ${./scripts/sway-tesseract.sh}";
             "${modifier}+o" = "exec sway-easyfocus focus";
