@@ -471,6 +471,12 @@ in
             # }
             {
               criteria = {
+                app_id = "swayimg";
+              };
+              command = "floating enable";
+            }
+            {
+              criteria = {
                 app_id = "mpv";
               };
               command = "opacity 1";
