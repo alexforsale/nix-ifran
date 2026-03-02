@@ -120,6 +120,17 @@
           "x-scheme-handler/org-protocol" = "emacsclient.desktop";
         };
       };
+
+      defaultApplications = {
+        "image/png" = [
+          "swayimg.desktop"
+          "brave.desktop"
+        ];
+        "image/jpeg" = [
+          "swayimg.desktop"
+          "brave.desktop"
+        ];
+      };
     };
   };
 }
