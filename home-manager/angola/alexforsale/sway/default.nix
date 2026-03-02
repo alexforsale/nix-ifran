@@ -137,6 +137,7 @@ in
       source-han-sans
       source-han-sans
       source-han-serif
+      winbox4
     ];
   };
 
@@ -818,7 +819,7 @@ in
 
       extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
-        export QT_QPA_PLATFORM=wayland
+        export QT_QPA_PLATFORM="wayland;xcb"
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export _JAVA_AWT_WM_NONREPARENTING=1
         export CLUTTER_BACKEND="wayland"
