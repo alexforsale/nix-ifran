@@ -109,5 +109,17 @@
         type = "Application";
       };
     };
+
+    mimeApps = {
+      associations = {
+        added = {
+          "x-scheme-handler/org-protocol" = "org-protocol.desktop";
+        };
+
+        removed = {
+          "x-scheme-handler/org-protocol" = "emacsclient.desktop";
+        };
+      };
+    };
   };
 }
