@@ -8,7 +8,6 @@
   imports = [
     ../../common
     ../../common/bash
-    ../../common/brave
     ../../common/emacs
     ../../common/git
     ../../common/mpd
@@ -103,7 +102,7 @@
         name = "Org-Protocol";
         exec = "emacsclient %u";
         mimeType = [
-          "x-sheme-handler/org-protocol"
+          "x-scheme-handler/org-protocol"
         ];
         terminal = false;
         icon = "emacs-icon";
