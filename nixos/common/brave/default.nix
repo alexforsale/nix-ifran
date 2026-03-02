@@ -7,8 +7,10 @@
       text = ''
         {
         "AutoLaunchProtocolsFromOrigins": [
-            "allowed_origins": [ "*" ],
-            "protocol": "org-protocol"
+            {
+              "allowed_origins": ["*"],
+              "protocol": "org-protocol",
+            }
           ]
         }
       '';
