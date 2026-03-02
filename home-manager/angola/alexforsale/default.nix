@@ -8,6 +8,7 @@
   imports = [
     ../../common
     ../../common/bash
+    ../../common/brave
     ../../common/emacs
     ../../common/git
     ../../common/mpd
