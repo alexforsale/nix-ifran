@@ -326,10 +326,10 @@ in
           command = display "off";
           resumeCommand = display "on";
         }
-        {
-          timeout = 900;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        }
+        # {
+        #   timeout = 900;
+        #   command = "${pkgs.systemd}/bin/systemctl suspend";
+        # }
       ];
     };
 
