@@ -19,6 +19,7 @@ in
     ../common/brave
     ../common/thunar
     ../common/kdeconnect
+    ../common/steam
     ../users/alexforsale
   ];
 
