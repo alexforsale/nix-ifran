@@ -708,6 +708,9 @@ in
             "${modifier}+Mod1+w" = "exec foot --app-id nmtui -e nmtui";
             "${modifier}+Mod1+p" = "exec wl-color-picker";
 
+            # kill
+            "${modifier}+Shift+q" = "kill";
+
             # fuzzel stuff
             "${modifier}+c" =
               "exec cliphist list |fuzzel --dmenu --anchor top-left | cliphist decode | wl-copy";
