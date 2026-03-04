@@ -80,6 +80,10 @@ in
     gnome.gnome-keyring.enable = true;
 
     pipewire.enable = true;
+
+    timesyncd = {
+      enable = true;
+    };
   };
 
   environment.systemPackages = [

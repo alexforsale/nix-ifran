@@ -16,12 +16,17 @@
       url = "git+ssh://git@gitlab.com/alexforsale/wallpapers";
       flake = false;
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable"; 
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     sops-nix,
+    nixos-wsl,
     ...
   } @ inputs: let
     systems = [
@@ -47,6 +52,15 @@
             ./nixos/angola
           ];
         };
+
+        zanzibar = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            nixos-wsl.nixosModules.default
+            sops-nix.nixosModules.sops
+            ./nixos/zanzibar
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -56,6 +70,14 @@
           modules = [
             sops-nix.homeManagerModules.sops
             ./home-manager/angola/alexforsale
+          ];
+        };
+        "alexforsale@zanzibar" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {inherit inputs;};
+          modules = [
+            sops-nix.homeManagerModules.sops
+            ./home-manager/zanzibar/alexforsale
           ];
         };
       };

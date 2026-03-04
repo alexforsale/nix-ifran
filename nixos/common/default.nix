@@ -152,10 +152,6 @@
       dnssec = "allow-downgrade";
     };
 
-    timesyncd = {
-      enable = true;
-    };
-
     zerotierone = {
       enable = true;
     };
