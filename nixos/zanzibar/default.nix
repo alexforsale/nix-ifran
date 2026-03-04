@@ -18,6 +18,7 @@
     wslConf = {
       boot.systemd = true;
       boot.initTimeout = 40000;
+      network.generateHosts = false;
     };
   };
 
