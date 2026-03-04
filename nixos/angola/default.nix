@@ -20,6 +20,7 @@ in
     ../common/thunar
     ../common/kdeconnect
     ../common/steam
+    ../common/zerotierone
     ../users/alexforsale
   ];
 

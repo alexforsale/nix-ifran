@@ -157,10 +157,6 @@
       dnsovertls = "opportunistic";
       dnssec = "allow-downgrade";
     };
-
-    zerotierone = {
-      enable = true;
-    };
   };
 
   environment.pathsToLink = [
