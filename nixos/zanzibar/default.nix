@@ -15,6 +15,10 @@
   wsl = {
     enable = true;
     defaultUser = "alexforsale";
+    wslConf = {
+      boot.systemd = true;
+      boot.initTimeout = 40000;
+    };
   };
 
   networking = {
