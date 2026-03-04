@@ -11,4 +11,8 @@
       ]);
     };
   };
+
+  home.packages = with pkgs; [
+    pass-git-helper
+  ];
 }
