@@ -151,12 +151,6 @@
         PasswordAuthentication = false;
       };
     };
-
-    resolved = {
-      enable = true;
-      dnsovertls = "opportunistic";
-      dnssec = "allow-downgrade";
-    };
   };
 
   environment.pathsToLink = [
