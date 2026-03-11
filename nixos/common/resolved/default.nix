@@ -4,7 +4,7 @@
 {
   services = {
     resolved = {
-      enabled = true;
+      enable = true;
       dnsovertls = "opportunistic";
       dnssec = "allow-downgrade";
     };
