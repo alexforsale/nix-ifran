@@ -61,6 +61,15 @@
             ./nixos/zanzibar
           ];
         };
+
+        zaire = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            nixos-wsl.nixosModules.default
+            sops-nix.nixosModules.sops
+            ./nixos/zaire
+          ];
+        };
       };
 
       homeConfigurations = {
@@ -78,6 +87,14 @@
           modules = [
             sops-nix.homeManagerModules.sops
             ./home-manager/zanzibar/alexforsale
+          ];
+        };
+        "alexforsale@zaire" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {inherit inputs;};
+          modules = [
+            sops-nix.homeManagerModules.sops
+            ./home-manager/zaire/alexforsale
           ];
         };
       };
