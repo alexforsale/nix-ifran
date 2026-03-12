@@ -6,6 +6,7 @@
     config = {
       window = {
         titlebar = false;
+        hideEdgeBorders = "smart";
         commands = [
           {
             criteria = {
