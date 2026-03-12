@@ -458,6 +458,12 @@ in
           smartBorders = "on";
         };
 
+        seat = {
+          "*" = {
+            hide_cursor = "when-typing enable";
+          };
+
+        };
         startup = [
           {
             command = "emacs --fg-daemon";
