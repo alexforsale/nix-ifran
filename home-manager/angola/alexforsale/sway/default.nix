@@ -522,6 +522,52 @@ in
             };
           }
         ];
+
+        workspaceOutputAssign = let
+          first = "HDMI-A-2";
+          second = "VGA-1";
+          in [
+            {
+              output = first;
+              workspace = "1";
+            }
+            {
+              output = first;
+              workspace = "2";
+            }
+            {
+              output = first;
+              workspace = "3";
+            }
+            {
+              output = first;
+              workspace = "4";
+            }
+            {
+              output = first;
+              workspace = "5";
+            }
+            {
+              output = second;
+              workspace = "6";
+            }
+            {
+              output = second;
+              workspace = "7";
+            }
+            {
+              output = second;
+              workspace = "8";
+            }
+            {
+              output = second;
+              workspace = "9";
+            }
+            {
+              output = second;
+              workspace = "10";
+            }
+          ];
       };
 
       enable = true;
