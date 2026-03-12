@@ -168,6 +168,13 @@
             };
             command = "floating enable";
           }
+          {
+            criteria = {
+              app_id = "thunar";
+              title = "Rename.*";
+            };
+            command = "floating enable; resize set 600 200";
+          }
         ];
       };
     };
