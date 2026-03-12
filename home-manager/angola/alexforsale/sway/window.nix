@@ -102,15 +102,15 @@
           {
             criteria = {
               app_id = "brave-browser";
+              title = "(?i)sign in.*";
             };
-            command = "floating disable";
+            command = "floating enable; move position center";
           }
           {
             criteria = {
               app_id = "brave-browser";
-              title = "(?i)sign in.*";
             };
-            command = "floating enable; move position center";
+            command = "floating disable";
           }
           {
             criteria = {
