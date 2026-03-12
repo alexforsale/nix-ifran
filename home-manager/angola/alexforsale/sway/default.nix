@@ -361,6 +361,13 @@ in
 
         workspaceAutoBackAndForth = true;
 
+        fonts = {
+          names = [
+            "Iosevka Nerd Font Mono"
+            "Font Awesome 7 Free"
+          ];
+          size = 11.0;
+        };
         colors = {
           background = colors.rgb.base00;
 
