@@ -7,13 +7,7 @@
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [
-        i3status
-        i3status-rust
-        termite
-        rofi
-        light
-      ];
+      extraPackages = [];
     };
 
     thunar = {
