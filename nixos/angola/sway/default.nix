@@ -26,7 +26,7 @@
   security = {
     pam = {
       services = {
-        swaylock = {
+        swaylock-fancy = {
           enableGnomeKeyring = true;
         };
       };
