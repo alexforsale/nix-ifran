@@ -86,6 +86,14 @@ in
     timesyncd = {
       enable = true;
     };
+
+    openvpn = {
+      servers = {
+        algeria = {
+          config = '' config /root/angola.ovpn'';
+        };
+      };
+    };
   };
 
   environment.systemPackages = [
