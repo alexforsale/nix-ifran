@@ -45,4 +45,14 @@
       };
     };
   };
+
+  services = {
+    openvpn = {
+      servers = {
+        algeria = {
+          config = '' config /root/zanzibar.ovpn'';
+        };
+      };
+    };
+  };
 }
