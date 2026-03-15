@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   ...
 }:
 {
@@ -42,6 +41,16 @@
     gnupg = {
       agent = {
         enable = true;
+      };
+    };
+  };
+
+  services = {
+    openvpn = {
+      servers = {
+        algeria = {
+          config = '' config /root/zaire.ovpn'';
+        };
       };
     };
   };
