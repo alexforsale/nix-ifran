@@ -46,6 +46,7 @@ let
          grammars.tree-sitter-yaml
          grammars.tree-sitter-toml
          grammars.tree-sitter-json
+         grammars.tree-sitter-lua
        ]))
     ]) ++ [
       tex
