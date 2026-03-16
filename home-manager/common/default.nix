@@ -15,6 +15,8 @@
     ./tmux
     ./xdg
     ./zoxide
+    ./neovim
+    ./git
   ];
 
   home = {

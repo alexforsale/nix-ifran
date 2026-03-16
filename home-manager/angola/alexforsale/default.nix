@@ -9,10 +9,8 @@
     ../../common
     ../../common/bash
     ../../common/emacs
-    ../../common/git
     ../../common/mpd
     ../../common/mpv
-    ../../common/neovim
     ../../common/password-store
     ./mail.nix
     ./sway
