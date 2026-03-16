@@ -18,7 +18,7 @@
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
-      inputs.nixpkgs.follows = "nixpkgs-unstable"; 
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -95,6 +95,14 @@
           modules = [
             sops-nix.homeManagerModules.sops
             ./home-manager/zaire/alexforsale
+          ];
+        };
+        "alexforsale@madagascar" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {inherit inputs;};
+          modules = [
+            sops-nix.homeManagerModules.sops
+            ./home-manager/madagascar/alexforsale
           ];
         };
       };
