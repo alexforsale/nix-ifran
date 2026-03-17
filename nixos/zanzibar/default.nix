@@ -55,4 +55,8 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    ansible
+  ];
 }
