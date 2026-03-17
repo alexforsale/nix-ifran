@@ -54,6 +54,12 @@
         22
         9993 # zerotierone
       ];
+      logRefusedPackets = true;
+      extraInputRules = ''
+        ip6 saddr { fc00::/7, fe80::/10 } udp sport 9993 counter accept comment "zerotierone"
+        ip6 saddr fd42:4242:4242::1 counter accept comment "openvpn server"
+        ip saddr 10.254.0.0/16 udp sport { 1900, 21929 } counter accept
+      '';
     };
     hosts = {
       "127.0.0.1" = [ "localhost" ];
@@ -67,6 +73,9 @@
       "10.254.254.12" = [ "madagascar" ];
       "10.254.254.13" = [ "burundi" ];
       "10.254.254.15" = [ "algeria" ];
+    };
+    nftables = {
+      enable = true;
     };
   };
 
