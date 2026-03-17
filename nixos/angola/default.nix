@@ -35,6 +35,10 @@ in
         22000
         21027
       ];
+      extraInputRules = ''
+        iifname "tap0" meta l4proto { tcp, udp } th sport 22000 counter accept
+        iifname "tap0" meta l4proto { tcp, udp } th dport 11289 counter accept
+        '';
     };
     hostName = "angola";
     networkmanager = {

@@ -56,9 +56,10 @@
       ];
       logRefusedPackets = true;
       extraInputRules = ''
-        ip6 saddr { fc00::/7, fe80::/10 } udp sport 9993 counter accept comment "zerotierone"
+        udp sport 9993 counter accept comment "zerotierone"
         ip6 saddr fd42:4242:4242::1 counter accept comment "openvpn server"
-        ip saddr 10.254.0.0/16 udp sport { 1900, 21929 } counter accept
+        ip saddr 10.0.0.0/8 meta l4proto {tcp, udp} th sport { 1900, 22000, 21929 } counter accept
+        ip6 saddr fe80::/10 ip6 daddr fe80::/10 meta l4proto {tcp, udp} th sport 22000 counter accept
       '';
     };
     hosts = {
@@ -99,6 +100,7 @@
     ntfs3g
     dig
     nmap
+    lsof
     traceroute
     tcpdump
     iperf
