@@ -25,6 +25,7 @@
       hunspellDicts.en_US-large
       hunspellDicts.id_ID
       gruvbox-gtk-theme
+      ansible
     ];
   };
 
