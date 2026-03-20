@@ -21,6 +21,7 @@ let
       consult-eglot-embark
       corfu
       gruvbox-theme
+      jinja2-mode
       magit
       marginalia
       markdown-mode
