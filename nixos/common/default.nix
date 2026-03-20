@@ -122,6 +122,11 @@
       enableSSHSupport = true;
     };
 
+    localsend = {
+      enable = true;
+      openFirewall = true;
+    };
+
     nano.enable = lib.mkForce false;
 
     vim = {
