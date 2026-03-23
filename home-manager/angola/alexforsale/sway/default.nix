@@ -170,7 +170,7 @@ in
       settings = {
         main = {
           terminal = "${pkgs.foot}/bin/foot";
-          font = "Iosevka Nerd Font:size=10";
+          font = "Iosevka Nerd Font Mono:size=10";
           match-counter = true;
         };
         colors = {
@@ -192,9 +192,9 @@ in
     i3status-rust = {
       enable = true;
       bars = {
-        bottom = {
+        default = {
           theme = "gruvbox-dark";
-          icons = "material-nf";
+          icons = "awesome6";
           blocks = [
             {
               block = "cpu";
@@ -240,11 +240,6 @@ in
     };
 
     swayimg.enable = true;
-
-    swaylock = {
-      enable = true;
-      package = pkgs.swaylock-fancy;
-    };
   };
 
   services = {
@@ -487,8 +482,14 @@ in
 
         bars = [
           {
-            position = "bottom";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+            fonts = {
+              names = [ "Iosevka Nerd Font Mono" "Font Awesome 7" ];
+              size = 9.0;
+              style = "Regular";
+            };
+            trayOutput = "*";
+            position = "top";
+            statusCommand = "i3status-rs ~/.config/i3status-rust/config-default.toml";
             colors = {
               background = colors.rgb.base01;
               statusline = colors.rgb.base05;
