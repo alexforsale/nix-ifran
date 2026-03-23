@@ -54,9 +54,6 @@ in
     };
   };
 
-  programs.lieer.enable = true;
-  services.lieer.enable = true;
-
   accounts = {
     contact = {
       basePath = ".contact";
@@ -148,13 +145,6 @@ in
           smtp = {
             host = "smtp.gmail.com";
             port = 465;
-          };
-          lieer = {
-            enable = true;
-            sync = {
-              enable = true;
-              frequency = "*-*-* *:00:00";
-            };
           };
           mbsync = {
             enable = true;
