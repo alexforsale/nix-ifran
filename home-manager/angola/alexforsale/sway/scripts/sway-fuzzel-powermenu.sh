@@ -4,7 +4,7 @@ SELECTION="$(printf "󰌾  Lock\n󰤂  Suspend\n󰍃  Log out\n󰜉  Reboot\n
 
 case $SELECTION in
   *"Lock")
-    swaylock;;
+    swaylock-fancy;;
   *"Suspend")
     systemctl suspend;;
   *"Log out")
