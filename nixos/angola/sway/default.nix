@@ -26,8 +26,7 @@
   security = {
     pam = {
       services = {
-        swaylock-fancy = {
-          enableGnomeKeyring = true;
+        swaylock = {
         };
       };
     };
@@ -56,5 +55,14 @@
   networking.firewall = rec {
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+
+  environment.systemPackages = with pkgs; [
+    qt5.qtwayland
+  ];
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
   };
 }

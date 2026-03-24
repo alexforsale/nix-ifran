@@ -110,6 +110,10 @@ in
       package = cursor.theme.package;
       size = 24;
       sway.enable = true;
+      x11 = {
+        enable = true;
+        defaultCursor = cursor.theme.name;
+      };
     };
 
     packages = with pkgs; [
@@ -240,6 +244,10 @@ in
     };
 
     swayimg.enable = true;
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-fancy;
+    };
   };
 
   services = {
@@ -314,6 +322,10 @@ in
       ];
 
       timeouts = [
+        {
+          timeout = 295;
+          command = "${pkgs.libnotify}/bin/notify-send 'Lock in 5 second' -t 5000";
+        }
         {
           timeout = 300;
           command = lock;
@@ -459,6 +471,10 @@ in
         };
         startup = [
           {
+            command = "dbus-update-activation-environment --all";
+            always = false;
+          }
+          {
             command = "emacs --fg-daemon";
             always = false;
           }
@@ -594,29 +610,31 @@ in
     };
   };
 
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [
-        "Iosevka Nerd Font Mono"
-      ];
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [
+          "Iosevka Nerd Font Mono"
+        ];
 
-      serif = [
-        "Noto Serif"
-        "Source Han Serif"
-        "Dejavu Sans Mono"
-      ];
+        serif = [
+          "Noto Serif"
+          "Source Han Serif"
+          "Dejavu Sans Mono"
+        ];
 
-      sansSerif = [
-        "Noto Serif"
-        "Source Han Serif"
-        "Dejavu Sans Mono"
-      ];
+        sansSerif = [
+          "Noto Serif"
+          "Source Han Serif"
+          "Dejavu Sans Mono"
+        ];
 
-      emoji = [
-        "Noto Color Emoji"
-        "Twitter Color Emoji"
-      ];
+        emoji = [
+          "Noto Color Emoji"
+          "Twitter Color Emoji"
+        ];
+      };
     };
   };
 
