@@ -25,6 +25,7 @@
       "audio"
       "lp"
       "rtkit"
+      "libvirtd"
     ];
     openssh = {
       authorizedKeys = {

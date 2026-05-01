@@ -21,6 +21,7 @@ in
     ../common/kdeconnect
     ../common/resolved
     ../common/steam
+    ../common/virt-manager
     ../common/zerotierone
     ../users/alexforsale
   ];
